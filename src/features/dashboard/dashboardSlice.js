@@ -37,6 +37,7 @@ const dashboardSlice = createSlice({
         state.status = 'failed';
         state.error = action.payload || 'Failed to fetch dashboard data';
       });
+
   },
 });
 

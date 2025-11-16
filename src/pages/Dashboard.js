@@ -10,16 +10,17 @@ import {
   FaPlus,
 } from "react-icons/fa";
 
-// ──────────────────────────────────────────────────────────────
-//  STYLED COMPONENTS (Exact Base44 Tailwind → CSS-in-JS)
-// ──────────────────────────────────────────────────────────────
+// ─────────────────────────
+// Layout Container
+// ─────────────────────────
 const Container = styled.div`
-  padding: 1rem;
-  min-height: 100vh;
-  background: linear-gradient(to bottom right, #fff7ed, #fff1e6, #ffeef0);
+  background: #fff9ec;
+  height: calc(100vh - 60px);
+  overflow-y: auto;
+  padding: 0.75rem;
 
   @media (min-width: 768px) {
-    padding: 2rem;
+    padding: 1rem;
   }
 `;
 
@@ -28,11 +29,12 @@ const MaxWidth = styled.div`
   margin: 0 auto;
 `;
 
+// Header
 const Header = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 
   @media (min-width: 768px) {
     flex-direction: row;
@@ -42,30 +44,26 @@ const Header = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: 1.875rem;
+  font-size: 1.8rem;
   font-weight: 700;
   color: #1f2937;
-
-  @media (min-width: 768px) {
-    font-size: 2.25rem;
-  }
 `;
 
 const Subtitle = styled.p`
   color: #6b7280;
-  margin-top: 0.5rem;
+  margin-top: 0.25rem;
 `;
 
 const AddButton = styled.button`
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.4rem;
   background: linear-gradient(to right, #f97316, #e11d48);
   color: white;
   font-weight: 600;
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.75rem;
-  box-shadow: 0 4px 20px rgba(249, 115, 22, 0.3);
+  padding: 0.6rem 1.25rem;
+  border-radius: 0.7rem;
+  box-shadow: 0 4px 18px rgba(249, 115, 22, 0.3);
   transition: all 0.2s;
 
   &:hover {
@@ -74,12 +72,12 @@ const AddButton = styled.button`
   }
 `;
 
-// ─── Stats Grid ─────────────────────────────────────────────
+// Stats Grid
 const StatsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  gap: 1.5rem;
-  margin-bottom: 2rem;
+  gap: 1.25rem;
+  margin-bottom: 1.75rem;
 
   @media (min-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
@@ -90,39 +88,37 @@ const StatsGrid = styled.div`
   }
 `;
 
-// ─── Card Base ──────────────────────────────────────────────
+// Cards
 const Card = styled.div`
   background: white;
   border-radius: 1rem;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.08);
 `;
 
 const CardHeader = styled.div`
-  padding: 1.5rem 1.5rem 1rem;
-  background: linear-gradient(to right, #fff7ed, #fce7f3);
-  border-bottom: 1px solid #fee2e2;
+  padding: 1.25rem;
+  background: #fff4e6;
+  border-bottom: 1px solid #f3d8c0;
 `;
 
 const CardTitle = styled.h3`
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 1.25rem;
+  gap: 0.6rem;
+  font-size: 1.2rem;
   font-weight: 600;
   color: #1f2937;
 `;
 
 const CardContent = styled.div`
-  padding: 1.5rem;
+  padding: 1.2rem;
 `;
 
-// ─── Stats Card ─────────────────────────────────────────────
 const StatsCardWrapper = styled(Card)`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.5rem;
+  padding: 1.25rem;
 `;
 
 const StatLabel = styled.div`
@@ -132,74 +128,72 @@ const StatLabel = styled.div`
 `;
 
 const StatValue = styled.div`
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 800;
   color: #1f2937;
 `;
 
 const StatIcon = styled.div`
-  width: 3.5rem;
-  height: 3.5rem;
+  width: 3.2rem;
+  height: 3.2rem;
   border-radius: 1rem;
   background: ${({ gradient }) => gradient};
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
-  font-size: 1.5rem;
-  box-shadow: 0 4px 12px ${({ shadow }) => shadow || "rgba(0,0,0,0.2)"};
+  font-size: 1.4rem;
+  box-shadow: 0 3px 10px ${({ shadow }) => shadow};
 `;
 
-// ─── Upcoming Item Card ─────────────────────────────────────
+// Upcoming Items
 const UpcomingItem = styled.div`
-  background: #ecfdf5;
-  border: 1.5px solid #34d399;
-  border-radius: 1rem;
-  padding: 1rem 1.25rem;
+  background: #fefaf2;
+  border: 1px solid #ffe2b3;
+  border-radius: 0.8rem;
+  padding: 1rem;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
   gap: 1rem;
-  box-shadow: 0 2px 8px rgba(52, 211, 153, 0.1);
+  margin-bottom: 16px;
 `;
 
 const StatusBadge = styled.div`
   display: flex;
   align-items: center;
-  gap: 0.35rem;
-  color: #166534;
-  font-size: 0.875rem;
+  gap: 0.3rem;
+  color: #c2410c;
+  font-size: 0.8rem;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
 `;
 
 const Dot = styled.div`
-  width: 0.75rem;
-  height: 0.75rem;
-  background: #10b981;
+  width: 0.6rem;
+  height: 0.6rem;
+  background: #fb923c;
   border-radius: 50%;
 `;
 
 const ItemTitle = styled.div`
   font-weight: 700;
   color: #111827;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
 `;
 
 const ItemDetail = styled.div`
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.35rem;
   color: #6b7280;
-  font-size: 0.925rem;
+  font-size: 0.9rem;
 `;
 
-// ──────────────────────────────────────────────────────────────
-//  MAIN COMPONENT
-// ──────────────────────────────────────────────────────────────
+// ─────────────────────────
+// MAIN COMPONENT
+// ─────────────────────────
 export default function Dashboard() {
   const dispatch = useDispatch();
+
   const {
     upcomingVaccinations = [],
     upcomingDewormings = [],
@@ -211,13 +205,15 @@ export default function Dashboard() {
     if (status === "idle") dispatch(fetchDashboardData());
   }, [dispatch, status]);
 
-  // ─── Compute Stats ────────────────────────────────────────
+  // Stats
   const uniquePets = new Set([
     ...upcomingVaccinations.map((v) => v.pet._id),
     ...upcomingDewormings.map((d) => d.pet._id),
   ]);
+
   const totalPets = uniquePets.size;
 
+  // Merge lists with formatting
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 
@@ -230,41 +226,22 @@ export default function Dashboard() {
     ...upcomingDewormings.map((d) => ({
       ...d,
       type: "deworming",
-      name: "Deworming",
+      name: d.medicineName || "Deworming",
     })),
   ].map((item) => {
     const dueDate = new Date(item.nextDueDate);
     const daysUntil = (dueDate - today) / (1000 * 60 * 60 * 24);
+
     let status = "upcoming";
     if (daysUntil < 0) status = "overdue";
     else if (daysUntil <= 7) status = "due_soon";
-    return { ...item, daysUntil, status, dueDate };
+
+    return { ...item, dueDate, daysUntil, status };
   });
 
   const overdueCount = allItems.filter((i) => i.status === "overdue").length;
   const dueSoonCount = allItems.filter((i) => i.status === "due_soon").length;
   const upToDateCount = allItems.filter((i) => i.status === "upcoming").length;
-
-  // ─── Render ───────────────────────────────────────────────
-  if (status === "loading") {
-    return (
-      <Container>
-        <MaxWidth>
-          <p className="text-center">Loading...</p>
-        </MaxWidth>
-      </Container>
-    );
-  }
-
-  if (status === "failed") {
-    return (
-      <Container>
-        <MaxWidth>
-          <p className="text-red-600 text-center">Error: {error}</p>
-        </MaxWidth>
-      </Container>
-    );
-  }
 
   return (
     <Container>
@@ -273,8 +250,9 @@ export default function Dashboard() {
         <Header>
           <div>
             <Title>Dashboard</Title>
-            <Subtitle>Welcome back! Here's your pet health overview</Subtitle>
+            <Subtitle>Your pet health overview</Subtitle>
           </div>
+
           <AddButton>
             <FaPlus /> Add New Pet
           </AddButton>
@@ -337,7 +315,7 @@ export default function Dashboard() {
           </StatsCardWrapper>
         </StatsGrid>
 
-        {/* Upcoming Care */}
+        {/* Upcoming Care List */}
         <Card>
           <CardHeader>
             <CardTitle>
@@ -345,6 +323,7 @@ export default function Dashboard() {
               Upcoming Care Schedule
             </CardTitle>
           </CardHeader>
+
           <CardContent>
             {allItems.length === 0 ? (
               <div className="text-center py-12">
@@ -357,17 +336,19 @@ export default function Dashboard() {
                 </p>
               </div>
             ) : (
-              <div className="space-y-3">
+              <div className="space-y-4">
                 {allItems.map((item) => (
-                  <UpcomingItem key={`${item.type}-${item.id}`}>
+                  <UpcomingItem key={`${item.type}-${item._id}`}>
                     <div>
                       <StatusBadge>
                         <Dot />
                         {item.status.replace("_", " ").toUpperCase()}
                       </StatusBadge>
+
                       <ItemTitle>
-                        {item.pet.name} - {item.name}
+                        {item.pet.name} — {item.name}
                       </ItemTitle>
+
                       <ItemDetail>
                         <FaCalendarAlt />
                         Due:{" "}
@@ -377,14 +358,8 @@ export default function Dashboard() {
                           day: "numeric",
                         })}
                       </ItemDetail>
-                      {item.type === "vaccination" && (
-                        <ItemDetail
-                          style={{ color: "#16a34a", fontWeight: 600 }}
-                        >
-                          {item.vaccineName}
-                        </ItemDetail>
-                      )}
                     </div>
+
                     <FaCalendarAlt
                       style={{
                         fontSize: "1.8em",

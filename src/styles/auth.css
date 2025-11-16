@@ -1,0 +1,112 @@
+/* ============ GLOBAL AUTH WRAPPER ============ */
+
+.auth-wrapper {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f6f7fb;
+  padding: 20px;
+}
+
+/* ============ CARD ============ */
+
+.auth-card {
+  width: 360px;
+  background: #ffffff;
+  padding: 40px 35px;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.auth-logo {
+  width: 85px;
+  height: 85px;
+  border-radius: 50%;
+  background: #fff7ee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 20px auto;
+  box-shadow: 0 4px 12px rgba(255, 123, 55, 0.12);
+}
+
+/* ============ TITLES ============ */
+
+.auth-card h2 {
+  margin: 6px 0 10px 0;
+  font-size: 22px;
+  color: #111827;
+  font-weight: 700;
+}
+
+.auth-card p {
+  margin-bottom: 18px;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+/* ============ INPUTS ============ */
+
+.auth-input {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  font-size: 15px;
+}
+
+.auth-input:focus {
+  outline: none;
+  border-color: #111827;
+}
+
+/* ============ BUTTONS ============ */
+
+.google-btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  background: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.primary-btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  background: #111827;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  margin-top: 10px;
+}
+
+/* ============ FOOTER ============ */
+
+.auth-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 18px;
+  font-size: 13px;
+}
+
+.auth-footer a {
+  color: #0f172a;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.auth-footer a:hover {
+  text-decoration: underline;
+}

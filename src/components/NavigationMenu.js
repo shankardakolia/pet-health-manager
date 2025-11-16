@@ -1,9 +1,9 @@
-import React from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
-import { useDispatch } from 'react-redux';
-import { logout } from '../features/auth/authSlice';
-import { FaHome, FaHeart, FaCog, FaSignOutAlt } from 'react-icons/fa';
+import React from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import styled from "styled-components";
+import { useDispatch } from "react-redux";
+import { logout } from "../features/auth/authSlice";
+import { FaHome, FaHeart, FaCog, FaSignOutAlt } from "react-icons/fa";
 
 const SideBar = styled.nav`
   width: 100%;
@@ -80,17 +80,19 @@ export default function NavigationMenu({ onSelect }) {
 
   const handleLogout = async () => {
     await dispatch(logout());
-    navigate('/login');
+    navigate("/login");
     if (onSelect) onSelect();
   };
 
   // Call onSelect on every navigation for mobile-drawer close
-  const handleNav = () => { if (onSelect) onSelect(); };
+  const handleNav = () => {
+    if (onSelect) onSelect();
+  };
 
   return (
     <SideBar>
       <Logo>
-        <span style={{fontSize: '1.7em', marginRight: 10}}>💗</span>
+        <span style={{ fontSize: "1.7em", marginRight: 10 }}>💗</span>
         Pet Health
       </Logo>
       <NavList>
