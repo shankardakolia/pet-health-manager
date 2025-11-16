@@ -1,24 +1,30 @@
+css
+/* Core Layout Adjustments to match image layout */
 .pet-page-bg {
   min-height: 100vh;
-  /* background: linear-gradient(123deg,#fff6ec 0%,#ffe5e3 100%); */
+  background: #fdfdfd; 
   padding: 0;
 }
+
 .pet-profile-card {
   margin: 40px auto;
-  max-width: 900px; /* Was 700px, now wider */
-  padding-bottom: 28px;
+  max-width: 700px; /* Default max-width for most screens */
+  padding: 0 10px;
 }
 
+/* Header Styling */
 .pet-header-gradient {
   display: flex;
   align-items: center;
   gap: 18px;
-  background: linear-gradient(90deg, #fd9340 0%, #fb6168 100%);
+  /* Adjust gradient colors to match the image more closely */
+  background: linear-gradient(90deg, #ff8c4b 0%, #ff527c 100%); 
   border-radius: 14px;
   padding: 24px 28px;
-  box-shadow: 0 6px 24px rgba(255,128,140,.10);
+  box-shadow: 0 4px 15px rgba(255, 128, 140, 0.2); /* Slightly less shadow than original */
   margin-bottom: 20px;
 }
+
 .pet-photo {
   background: #fff;
   border-radius: 12px;
@@ -28,51 +34,80 @@
   font-size: 32px;
   width: 54px;
   height: 54px;
-  box-shadow: 0 1px 5px rgba(0,0,0,0.06);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.06);
   margin-right: 10px;
+  color: #fb6168; /* Add color to the paw icon */
 }
+
 .pet-title {
   font-size: 1.6rem;
   font-weight: 700;
-  color: #23272e;
+  color: #fff; /* Text color is white in the image */
   margin-bottom: 3px;
 }
+
 .pet-row {
-  font-size: 15px;
-  color: #23272e;
-  margin-bottom: 6px;
+  font-size: 14px; /* Slightly smaller font size to match image */
+  color: #fff; /* Text color is white in the image */
+  margin-bottom: 4px; /* Reduced margin */
+  opacity: 0.9;
 }
-.dot { margin: 0 8px; color: #444; }
+
+.dot { 
+  margin: 0 6px; /* Reduced margin */
+  color: #fff; /* Dot color is white */
+  opacity: 0.7;
+}
+
+/* Tabs Styling */
 .tabs-switch {
   display: flex;
   gap: 15px;
-  margin: 12px 0 0 16px;
+  margin: 12px 0 0 22px; /* Adjusted margin to align with the card content */
 }
+
 .tab-btn {
-  background: #f9e3da;
-  color: #ff694f;
-  border-radius: 12px 12px 0 0;
+  /* The default tab background in the image is transparent */
+  background: transparent; 
+  color: #aaa; /* Default color is a light grey */
+  border-radius: 0; /* No border radius on the bottom in the image */
   border: none;
-  padding: 8px 24px;
-  font-size: 16px;
+  padding: 8px 0; /* Padding adjustment */
+  font-size: 15px; /* Slightly smaller font size */
   font-weight: 600;
   cursor: pointer;
-  transition: background .2s;
+  transition: color .2s;
+  border-bottom: 2px solid transparent; /* Add transparent border for active state effect */
+  outline: none; /* Remove default focus outline */
 }
+
 .tab-btn.active {
-  background: #fff;
-  color: #23272e;
+  background: transparent; /* Active background is still transparent */
+  color: #23272e; /* Active text color is dark grey/black */
   font-weight: 700;
+  border-bottom-color: #ff694f; /* Active tab underline color */
 }
+
 .tab-panel {
   display: none;
 }
+
 .tab-panel.show {
   display: block;
+  /* Add a white card background for the content block */
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Subtle shadow for the content card */
+  padding: 20px 28px; /* Padding inside the content card */
+  margin-top: -1px; /* Overlaps slightly with the active tab bottom border */
 }
+
 .card-block {
-  padding: 0 20px;
+  /* Padding is handled by the .tab-panel.show now */
+  padding: 0; 
 }
+
+/* Info Card Styling */
 .card-header {
   display: flex;
   justify-content: space-between;
@@ -80,93 +115,114 @@
   padding: 7px 0;
   font-size: 17px;
   font-weight: 600;
-  color: #fb6168;
+  color: #444; /* Header text color is dark grey */
+  margin-bottom: 15px;
 }
+
 .card-header.deworming {
-  color: #fa4c7c;
+  color: #444; /* Deworming header is same color in the image */
 }
+
 .add-btn {
-  background: #fb6168;
+  background: #ff694f; /* Button color */
   color: #fff;
   border: none;
   border-radius: 7px;
   font-size: 14px;
   font-weight: 500;
-  padding: 7px 20px;
+  padding: 8px 16px; /* Padding adjustment */
   cursor: pointer;
+  box-shadow: 0 2px 7px rgba(255, 105, 79, 0.4); /* Subtle button shadow */
 }
+
 .add-btn.pink {
   background: #fa4c7c;
+  box-shadow: 0 2px 7px rgba(250, 76, 124, 0.4);
 }
+
 .info-card {
   background: #fff;
+  /* Remove shadow from individual info cards */
+  box-shadow: none; 
+  border: 1px solid #eee; /* Add a subtle border instead of shadow */
   border-radius: 8px;
-  box-shadow: 0 2px 7px rgba(251,97,104,0.04);
   padding: 18px;
   margin: 14px 0;
   position: relative;
 }
+
 .card-empty {
   color: #aaa;
   font-size: 14px;
   margin: 14px 0;
 }
+
 .info-title {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 600;
-  color: #fb6168;
+  color: #23272e; /* Title color is dark grey/black */
   display: flex;
   align-items: center;
-  margin-bottom: 4px;
+  margin-bottom: 8px; /* Increased margin */
 }
+
 .dot.orange {
   background: #fd9340;
   border-radius: 50%;
-  width: 10px;
-  height: 10px;
+  width: 8px; /* Slightly smaller dot */
+  height: 8px;
   display: inline-block;
-  margin-right: 10px;
+  margin-right: 12px; /* Increased margin */
 }
+
 .dot.pink {
   background: #fa4c7c;
   border-radius: 50%;
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   display: inline-block;
-  margin-right: 10px;
+  margin-right: 12px;
 }
+
 .info-row {
-  font-size: 14px;
-  color: #222;
-  margin-bottom: 5px;
+  font-size: 13px; /* Smaller font size */
+  color: #555; /* Medium grey color */
+  margin-bottom: 4px; /* Reduced margin */
   display: flex;
   align-items: center;
 }
+
 .info-icon {
-  font-size: 15px;
-  margin-right: 7px;
+  font-size: 14px;
+  margin-right: 8px;
+  color: #aaa; /* Icon color is light grey */
 }
+
 .card-actions {
   position: absolute;
   right: 16px;
   top: 17px;
   display: flex;
-  gap: 7px;
+  gap: 12px; /* Increased gap */
 }
+
 .action-icon {
   background: none;
   border: none;
-  font-size: 17px;
+  font-size: 16px; /* Slightly smaller icon */
   cursor: pointer;
-  opacity: 0.82;
+  opacity: 0.6; /* More subtle icons */
+  color: #aaa;
 }
+
 .action-icon.delete {
-  color: #fa4c7c;
+  color: #aaa; /* Delete icon color is also subtle grey */
 }
+
 .back-btn {
   margin: 28px 22px 0 22px;
   background: transparent;
-  color: #fb6168;
+  color: #aaa; /* Back button is subtle grey */
   border: none;
   font-weight: 600;
   font-size: 15px;
@@ -174,11 +230,32 @@
   padding: 9px 0;
   display: flex;
   align-items: center;
+  text-decoration: none; /* Ensure no underline if it renders as anchor tag */
 }
+
+/* Media Queries for responsiveness */
 @media (max-width: 680px) {
-  .pet-profile-card { max-width:100%; border-radius: 0; }
-  .pet-header-gradient { flex-direction: column; padding: 20px 7px; }
+  .pet-profile-card { max-width:100%; border-radius: 0; padding: 0 8px; }
+  .pet-header-gradient { flex-direction: column; padding: 20px 7px; text-align: center; }
   .tabs-switch { margin-left: 8px; }
   .card-block { padding: 0 5px; }
   .back-btn { margin-left: 8px; }
+  .pet-title { color: #fff; }
+  .pet-row { color: #fff; }
+  .tab-btn.active { color: #23272e; }
+  .tab-panel.show { padding: 15px; }
+  .card-header { font-size: 16px; }
+  .add-btn { font-size: 13px; padding: 6px 14px; }
+}
+
+/* New CSS rule for resolutions 1440px and above */
+@media (min-width: 1440px) {
+  .pet-profile-card {
+    /* Set a new max-width for large screens to control content width */
+    max-width: 1000px; 
+    width: 100%;
+    /* The 'auto' margins automatically center the element within its parent container
+       (which is the available space next to the sidebar). */
+  margin: 40px auto;
+  }
 }

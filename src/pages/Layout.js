@@ -13,6 +13,8 @@ import { useDispatch } from "react-redux";
 
 const SIDEBAR_WIDTH = 260;
 const MOBILE_BREAKPOINT = 768;
+// Use 1080px as the breakpoint where scaling starts to look bad, as identified during debugging
+const SCALE_BREAKPOINT = 1080; 
 
 // unified warm background color
 const UI_BG = "#fafafa";
@@ -20,30 +22,36 @@ const UI_BG = "#fafafa";
 export default function Layout() {
   const navigate = useNavigate();
 
-  const isMobileInitial =
-    typeof window !== "undefined"
-      ? window.innerWidth <= MOBILE_BREAKPOINT
-      : false;
-
-  const [isMobile, setIsMobile] = useState(isMobileInitial);
-  const [sidebarOpen, setSidebarOpen] = useState(!isMobileInitial);
+  const [windowWidth, setWindowWidth] = useState(
+    typeof window !== "undefined" ? window.innerWidth : MOBILE_BREAKPOINT
+  );
 
   useEffect(() => {
     const onResize = () => {
-      const mobile = window.innerWidth <= MOBILE_BREAKPOINT;
-      setIsMobile(mobile);
-      setSidebarOpen(!mobile);
+      setWindowWidth(window.innerWidth);
     };
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
   }, []);
+
+  // Derived state based on windowWidth
+  const isMobile = windowWidth <= MOBILE_BREAKPOINT;
+  // Check if the screen is large enough to benefit from centering and scaling
+  const isLargeScreen = windowWidth >= SCALE_BREAKPOINT;
+  
+  const [sidebarOpen, setSidebarOpen] = useState(!isMobile);
+
+  useEffect(() => {
+    setSidebarOpen(!isMobile);
+  }, [isMobile]);
+
 
   const dispatch = useDispatch();
 
   const logout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
-    dispatch(resetAllState ());
+    dispatch(resetAllState());
     navigate("/login");
   };
 
@@ -52,6 +60,23 @@ export default function Layout() {
     { title: "My Pets", to: "/mypets", icon: FaHeart },
     { title: "Settings", to: "/settings", icon: FaCog },
   ];
+
+  // Dynamic styles for the main content's <main> tag to center it on large screens
+  const mainContentStyle = {
+    padding: 0,
+    paddingBottom: 0,
+    // We remove maxWidth when large, letting the browser use 100% width of the available space
+    // and relying solely on 'margin: auto' to center it and provide flexible margins.
+    maxWidth: isLargeScreen ? "none" : "100%", 
+    margin: isLargeScreen ? "0 auto" : "0", 
+    // Add margin top/bottom for spacing on large views
+    marginTop: isLargeScreen ? "40px" : "0",
+    marginBottom: isLargeScreen ? "40px" : "0",
+    transition: "max-width 0.25s ease, margin 0.25s ease",
+    // Constrain the content width flexibly so it doesn't span a massive cinema display entirely
+    width: isLargeScreen ? '80%' : '100%', 
+  };
+
 
   return (
     <div style={{ display: "flex", minHeight: "100vh" }}>
@@ -191,14 +216,15 @@ export default function Layout() {
         />
       )}
 
-      {/* ─────────── MAIN CONTENT ─────────── */}
+      {/* ─────────── MAIN CONTENT WRAPPER ─────────── */}
       <div
         style={{
           flex: 1,
           marginLeft: isMobile ? 0 : SIDEBAR_WIDTH,
-          background: "#f7f8fa",
+          background: "#fff9ec",
           minHeight: "100vh",
           padding: 0,
+          // Removed grid properties as they conflict with auto margins when width is 100%
         }}
       >
         {/* Mobile hamburger inside content */}
@@ -234,7 +260,8 @@ export default function Layout() {
           </div>
         )}
 
-        <main style={{ padding: 0, paddingBottom: 0 }}>
+        {/* The main content area with dynamic centering styles */}
+        <main style={mainContentStyle}>
           <Outlet />
         </main>
       </div>

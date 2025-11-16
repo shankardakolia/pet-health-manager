@@ -13,15 +13,18 @@ const PetDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  
 
   const { pet, vaccinations, dewormings, status, error } = useSelector(
     (state) => state.petDetails
   );
   const [activeTab, setActiveTab] = useState("vaccinations");
 
-  useEffect(() => {
+useEffect(() => {
+  if (status === 'idle' || (pet && pet._id !== id)) {
     dispatch(fetchPetDetails(id));
-  }, [dispatch, id]);
+  }
+}, [dispatch, id, pet, status]);
 
   if (status === "loading") return <div className="loading">Loading...</div>;
   if (error) return <div className="error">{error}</div>;

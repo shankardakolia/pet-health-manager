@@ -194,26 +194,31 @@ const ItemDetail = styled.div`
 export default function Dashboard() {
   const dispatch = useDispatch();
 
-  const {
-    upcomingVaccinations = [],
-    upcomingDewormings = [],
-    status,
-    error,
-  } = useSelector((state) => state.dashboard);
+  // Extract and safely destructure data object
+  const data = useSelector((state) => state.dashboard.data) || {};
+  const upcomingVaccinations = data.upcomingVaccinations || [];
+  const upcomingDewormings = data.upcomingDewormings || [];
+
+  const status = useSelector((state) => state.dashboard.status);
+  const error = useSelector((state) => state.dashboard.error);
 
   useEffect(() => {
     if (status === "idle") dispatch(fetchDashboardData());
   }, [dispatch, status]);
 
-  // Stats
+  if (error) {
+  return <div className="error-message">Error: {error}</div>;
+}
+
+
+  // Stats computations
   const uniquePets = new Set([
-    ...upcomingVaccinations.map((v) => v.pet._id),
-    ...upcomingDewormings.map((d) => d.pet._id),
+    ...upcomingVaccinations.filter((v) => v.pet).map((v) => v.pet._id),
+    ...upcomingDewormings.filter((d) => d.pet).map((d) => d.pet._id),
   ]);
 
   const totalPets = uniquePets.size;
 
-  // Merge lists with formatting
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 

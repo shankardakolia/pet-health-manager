@@ -92,3 +92,31 @@
   gap: 6px;
   align-items: center;
 }
+
+/* Container for the icon and text */
+.paw-icon-container {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between icon and text */
+}
+
+/* Styles for the inner span containing just the emoji */
+.paw-emoji {
+  background: #fff;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px; /* This controls the large size of the paw print */
+  width: 54px;
+  height: 54px;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.06);
+  color: #fb6168; /* Color of the paw print */
+}
+
+/* Styles for the text "Pet Paws" */
+.paw-text {
+  font-size: 16px; /* A normal font size for the text */
+  font-weight: 600;
+  color: #fff; /* Assuming the pet-card-top has a colored background */
+}

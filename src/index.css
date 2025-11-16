@@ -11,3 +11,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.main-content-wrapper {
+  /* Use CSS Grid to center the <main> element it contains */
+  display: grid;
+  justify-content: center; /* Centers children horizontally */
+}

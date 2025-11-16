@@ -19,6 +19,7 @@ const appReducer = combineReducers({
 // Root reducer wrapping reset logic
 const rootReducer = (state, action) => {
   if (action.type === RESET_ALL_STATE) {
+    console.log('RESET_ALL_STATE dispatched, resetting redux state');
     state = undefined; // this resets all slices to initialState
   }
   return appReducer(state, action);
